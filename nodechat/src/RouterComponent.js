@@ -3,7 +3,7 @@ import firebase from "firebase";
 import { Scene, Router, Actions } from "react-native-router-flux";
 
 import LoginForm from "./Components/LoginForm";
-import ChatRoom from "./Components/ChatRoom";
+import MyChat from "./Components/MyChat";
 
 const RouterComponent = () => {
   // firebase.auth().onAuthStateChanged(user => {
@@ -15,7 +15,7 @@ const RouterComponent = () => {
     <Router hideNavBar>
       <Scene key="root" hideNavBar>
         <Scene initial key="login" component={LoginForm} hideNavBar />
-        <Scene key="chatRoom" component={ChatRoom} hideNavBar />
+        <Scene key="chatRoom" component={MyChat} hideNavBar />
       </Scene>
     </Router>
   );

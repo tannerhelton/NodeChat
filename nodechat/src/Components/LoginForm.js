@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
+import { Chatkit } from "@pusher/chatkit-client";
 
 import { StatusBar } from "react-native";
 import {
@@ -29,25 +30,16 @@ class LoginForm extends Component {
   state = { email: "", password: "", loading: false };
 
   loginPress() {
-    const { email, password } = this.state;
+    const chatkit = new Chatkit({
+      instanceLocator: "v1:us1:8e47d89f-b3b4-4dfb-b898-10c4b82f20fc",
+      key:
+        "004619e5-4c38-49e1-8fcf-9772c0c433a4:UsShtrbJjJ+oqZT4ERUpxJScc/gqAHWK0LUPbum98KY="
+    });
 
-    this.setState({ loading: true });
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({
-          email: "",
-          password: "",
-          loading: false
-        });
-        Actions.retreats();
-      })
-      .catch(error => {
-        this.setState({ loading: false });
-        alert(error);
-      });
+    chatkit.createUser({
+      id: this.state.email,
+      name: this.state.email
+    });
   }
 
   renderButton() {
@@ -71,7 +63,7 @@ class LoginForm extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label>Email</Label>
+              <Label>Name</Label>
               <Input
                 autoCorrect={false}
                 value={this.state.email}
