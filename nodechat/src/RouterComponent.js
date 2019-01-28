@@ -6,11 +6,6 @@ import LoginForm from "./Components/LoginForm";
 import MyChat from "./Components/MyChat";
 
 const RouterComponent = () => {
-  // firebase.auth().onAuthStateChanged(user => {
-  //   if (!user) {
-  //     Actions.chatRoom();
-  //   }
-  // });
   return (
     <Router hideNavBar>
       <Scene key="root" hideNavBar>

@@ -1,6 +1,6 @@
 import React from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { ChatManager, TokenProvider } from "@pusher/chatkit-client";
+import {GiftedChat} from "react-native-gifted-chat";
+import {ChatManager, TokenProvider} from "@pusher/chatkit-client";
 
 const CHATKIT_TOKEN_PROVIDER_ENDPOINT =
   "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/8e47d89f-b3b4-4dfb-b898-10c4b82f20fc/token";
@@ -28,7 +28,7 @@ export default class MyChat extends React.Component {
   };
 
   onReceive = data => {
-    const { id, senderId, text, createdAt } = data;
+    const {id, senderId, text, createdAt} = data;
     const incomingMessage = {
       _id: id,
       text: text,
