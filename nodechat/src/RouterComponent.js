@@ -9,8 +9,8 @@ const RouterComponent = () => {
   return (
     <Router hideNavBar>
       <Scene key="root" hideNavBar>
-        <Scene key="login" component={LoginForm} hideNavBar />
-        <Scene initial key="chatRoom" component={MyChat} hideNavBar />
+        <Scene initial key="login" component={LoginForm} hideNavBar />
+        <Scene key="chatRoom" component={MyChat} hideNavBar />
       </Scene>
     </Router>
   );

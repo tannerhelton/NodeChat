@@ -1,6 +1,7 @@
 import React from "react";
 import {GiftedChat} from "react-native-gifted-chat";
 import {ChatManager, TokenProvider} from "@pusher/chatkit-client";
+import LoginForm from "./LoginForm";
 
 const CHATKIT_TOKEN_PROVIDER_ENDPOINT =
   "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/8e47d89f-b3b4-4dfb-b898-10c4b82f20fc/token";
@@ -47,13 +48,14 @@ export default class MyChat extends React.Component {
   };
 
   componentDidMount() {
+    console.log("Test info: " + this.props.userName);
     const tokenProvider = new TokenProvider({
       url: CHATKIT_TOKEN_PROVIDER_ENDPOINT
     });
 
     const chatManager = new ChatManager({
       instanceLocator: CHATKIT_INSTANCE_LOCATOR,
-      userId: CHATKIT_USER_NAME,
+      userId: this.props.userName,
       tokenProvider: tokenProvider
     });
 
@@ -79,7 +81,7 @@ export default class MyChat extends React.Component {
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         user={{
-          _id: CHATKIT_USER_NAME
+          _id: this.props.userName
         }}
       />
     );
